@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Degree Comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F2F1EC;
+    --panel: #FBFAF7;
+    --ink: #1C1F26;
+    --ink-soft: #55595F;
+    --rule: #D9D6C9;
+    --monash: #0B4F73;
+    --monash-tint: #E7EEF1;
+    --rmit: #C8102E;
+    --rmit-tint: #F7E9EB;
+    --gold: #A9813F;
+    --good: #2E5E3E;
+    --bad: #8A3B2C;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Public Sans', sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 64px 32px 80px;
+  }
+
+  header {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  header h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    line-height: 1.15;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+
+  header p {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    margin: 0;
+    max-width: 56ch;
+  }
+
+  .priorities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 56px;
+  }
+
+  .priorities div {
+    flex: 1 1 160px;
+    padding: 18px 20px;
+    border-right: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .priorities div:last-child { border-right: none; }
+
+  .priorities .num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .priorities .label {
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--accent);
+    padding: 28px 28px 30px;
+  }
+
+  .card.monash { --accent: var(--monash); }
+  .card.rmit { --accent: var(--rmit); }
+
+  .card .tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .card h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin: 0 0 4px;
+    line-height: 1.25;
+  }
+
+  .card .meta {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    margin: 0 0 20px;
+  }
+
+  .section-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-label.strength { color: var(--good); }
+  .section-label.weakness { color: var(--bad); margin-top: 22px; }
+
+  ul.points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul.points li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 9px;
+    font-size: 0.96rem;
+    color: var(--ink);
+  }
+
+  ul.points.strength li::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    color: var(--good);
+    font-weight: 700;
+  }
+
+  ul.points.weakness li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--bad);
+    font-weight: 700;
+  }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    max-width: 68ch;
+  }
+
+  @media (max-width: 720px) {
+    .grid { grid-template-columns: 1fr; }
+    .wrap { padding: 40px 20px 60px; }
+    .priorities div { flex: 1 1 45%; border-bottom: 1px solid var(--rule); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Monash vs RMIT: weighing the IT degree options</h1>
+    <p>A side-by-side look at strengths and weaknesses across four paths, ordered by what matters most to you.</p>
+  </header>
+
+  <div class="priorities">
+    <div><span class="num">1</span><span class="label">Course content</span></div>
+    <div><span class="num">2</span><span class="label">Location &amp; lifestyle</span></div>
+    <div><span class="num">3</span><span class="label">Accommodation comfort</span></div>
+    <div><span class="num">4</span><span class="label">Overall cost</span></div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card monash">
+      <span class="tag">Monash · Clayton</span>
+      <h2>Bachelor of IT</h2>
+      <p class="meta">Single degree, 3 years</p>
+
+      <p class="section-label strength">Strengths</p>
+      <ul class="points strength">
+        <li>Accommodation is a one-minute walk to class — no early starts</li>
+        <li>Large, natural campus with a calmer, greener feel</li>
+        <li>Cheaper accommodation than RMIT's baseline rate</li>
+        <li>Keeps career direction flexible if you're still deciding</li>
+      </ul>
+
+      <p class="section-label weakness">Weaknesses</p>
+      <ul class="points weakness">
+        <li>Twin beds only in accommodation</li>
+        <li>Further from the city — less immediately "on your doorstep"</li>
+        <li>No business content built into the degree</li>
+        <li>No equivalent to the Apple Foundation Program</li>
+      </ul>
+    </div>
+
+    <div class="card monash">
+      <span class="tag">Monash · Clayton</span>
+      <h2>Bachelor of IT + Digital Business</h2>
+      <p class="meta">Double degree, longer duration</p>
+
+      <p class="section-label strength">Strengths</p>
+      <ul class="points strength">
+        <li>Substantial, multi-year business content — matches your actual interest, not just a bonus extra</li>
+        <li>Same one-minute walk to class as the single degree</li>
+        <li>Broadens career options across tech and business</li>
+        <li>Large, natural campus feel</li>
+      </ul>
+
+      <p class="section-label weakness">Weaknesses</p>
+      <ul class="points weakness">
+        <li>Longer degree — more time and cost overall</li>
+        <li>Twin beds only</li>
+        <li>Further from the city</li>
+        <li>No Apple Foundation Program</li>
+      </ul>
+    </div>
+
+    <div class="card rmit">
+      <span class="tag">RMIT · Melbourne City</span>
+      <h2>Bachelor of IT</h2>
+      <p class="meta">Regular stream · 3 years · ATAR ~70</p>
+
+      <p class="section-label strength">Strengths</p>
+      <ul class="points strength">
+        <li>City campus, close to things to do</li>
+        <li>Queen bed accommodation option available</li>
+        <li>Can add the Apple Foundation Program — free, 4 weeks, low-stress add-on</li>
+        <li>Finishes in 3 years, lower ATAR requirement</li>
+        <li>Possible accommodation discount if the financial aid voucher applies</li>
+      </ul>
+
+      <p class="section-label weakness">Weaknesses</p>
+      <ul class="points weakness">
+        <li>No structured industry internship built in</li>
+        <li>More expensive accommodation baseline than Monash</li>
+        <li>No dedicated business/double-degree content stream</li>
+      </ul>
+    </div>
+
+    <div class="card rmit">
+      <span class="tag">RMIT · Melbourne City</span>
+      <h2>Bachelor of IT (Professional)</h2>
+      <p class="meta">4 years · ATAR ~83–84 · includes internship year</p>
+
+      <p class="section-label strength">Strengths</p>
+      <ul class="points strength">
+        <li>Built-in paid industry internship in the final year</li>
+        <li>Capstone project and programming studios for real-world experience</li>
+        <li>RMIT organises the internship placement for you</li>
+        <li>City campus, queen bed option, Apple Foundation Program available</li>
+        <li>Strong professional network before you graduate</li>
+      </ul>
+
+      <p class="section-label weakness">Weaknesses</p>
+      <ul class="points weakness">
+        <li>4 years total — one more year than the other three options</li>
+        <li>Higher entry score — confirm your ATAR clears ~83–84</li>
+        <li>Same accommodation cost consideration as the regular RMIT stream</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    Ranked by your stated priorities: course content weighs heaviest, so the real fork is between Monash's Digital Business double degree and RMIT's Professional stream — both meaningfully deepen your degree, just in different directions.
+  </footer>
+
+</div>
+</body>
+</html>
