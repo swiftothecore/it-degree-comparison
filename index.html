@@ -135,6 +135,13 @@
     border: 1px solid var(--rule);
     border-top: 4px solid var(--accent);
     padding: 28px 28px 30px;
+    cursor: pointer;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 16px rgba(28, 31, 38, 0.08);
+    transform: translateY(-2px);
   }
 
   .card.monash { --accent: var(--monash); }
@@ -245,7 +252,7 @@
 
   <div class="grid" id="cardGrid">
 
-    <div class="card monash">
+    <div class="card monash" data-url="https://www.monash.edu/study/courses/find-a-course/information-technology-c2000">
       <span class="tag">Monash · Clayton</span>
       <h2>Bachelor of IT</h2>
       <p class="meta">Single degree, 3 years</p>
@@ -267,7 +274,7 @@
       </ul>
     </div>
 
-    <div class="card monash">
+    <div class="card monash" data-url="https://www.monash.edu/study/courses/find-a-course/digital-business-and-information-technology-b2050">
       <span class="tag">Monash · Clayton</span>
       <h2>Bachelor of IT + Digital Business</h2>
       <p class="meta">Double degree, longer duration</p>
@@ -289,7 +296,7 @@
       </ul>
     </div>
 
-    <div class="card rmit">
+    <div class="card rmit" data-url="https://www.rmit.edu.au/study-with-us/levels-of-study/undergraduate-study/bachelor-degrees/bachelor-of-information-technology-bp162">
       <span class="tag">RMIT · Melbourne City</span>
       <h2>Bachelor of IT</h2>
       <p class="meta">Regular stream · 3 years · ATAR ~70</p>
@@ -311,7 +318,7 @@
       </ul>
     </div>
 
-    <div class="card rmit">
+    <div class="card rmit" data-url="https://www.rmit.edu.au/study-with-us/levels-of-study/undergraduate-study/bachelor-degrees/bachelor-of-information-technology-professional-bp349">
       <span class="tag">RMIT · Melbourne City</span>
       <h2>Bachelor of IT (Professional)</h2>
       <p class="meta">4 years · ATAR ~83–84 · includes internship year</p>
@@ -350,6 +357,13 @@
     wrap.classList.toggle('wide', isRow);
     btn.textContent = isRow ? 'Show as 2 by 2' : 'Show all four side by side';
   }
+
+  document.querySelectorAll('.card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      const url = card.getAttribute('data-url');
+      if (url) window.open(url, '_blank', 'noopener');
+    });
+  });
 </script>
 </body>
 </html>
