@@ -38,6 +38,11 @@
     max-width: 1080px;
     margin: 0 auto;
     padding: 64px 32px 80px;
+    transition: max-width 0.2s ease;
+  }
+
+  .wrap.wide {
+    max-width: 1600px;
   }
 
   header {
@@ -220,7 +225,7 @@
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="wrap" id="wrap">
 
   <header>
     <h1>Monash vs RMIT: weighing the IT degree options</h1>
@@ -339,8 +344,10 @@
 <script>
   function toggleLayout() {
     const grid = document.getElementById('cardGrid');
+    const wrap = document.getElementById('wrap');
     const btn = document.getElementById('layoutBtn');
     const isRow = grid.classList.toggle('row-of-four');
+    wrap.classList.toggle('wide', isRow);
     btn.textContent = isRow ? 'Show as 2 by 2' : 'Show all four side by side';
   }
 </script>
