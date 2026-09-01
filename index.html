@@ -92,10 +92,37 @@
     color: var(--ink);
   }
 
+  .layout-toggle {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+  }
+
+  .layout-toggle button {
+    font-family: 'Public Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+
+  .layout-toggle button:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 28px;
+  }
+
+  .grid.row-of-four {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .card {
@@ -180,10 +207,15 @@
     max-width: 68ch;
   }
 
+  @media (max-width: 1000px) {
+    .grid.row-of-four { grid-template-columns: 1fr 1fr; }
+  }
+
   @media (max-width: 720px) {
-    .grid { grid-template-columns: 1fr; }
+    .grid, .grid.row-of-four { grid-template-columns: 1fr; }
     .wrap { padding: 40px 20px 60px; }
     .priorities div { flex: 1 1 45%; border-bottom: 1px solid var(--rule); }
+    .layout-toggle { justify-content: flex-start; }
   }
 </style>
 </head>
@@ -202,7 +234,11 @@
     <div><span class="num">4</span><span class="label">Overall cost</span></div>
   </div>
 
-  <div class="grid">
+  <div class="layout-toggle">
+    <button id="layoutBtn" onclick="toggleLayout()">Show all four side by side</button>
+  </div>
+
+  <div class="grid" id="cardGrid">
 
     <div class="card monash">
       <span class="tag">Monash · Clayton</span>
@@ -299,5 +335,14 @@
   </footer>
 
 </div>
+
+<script>
+  function toggleLayout() {
+    const grid = document.getElementById('cardGrid');
+    const btn = document.getElementById('layoutBtn');
+    const isRow = grid.classList.toggle('row-of-four');
+    btn.textContent = isRow ? 'Show as 2 by 2' : 'Show all four side by side';
+  }
+</script>
 </body>
 </html>
